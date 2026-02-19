@@ -49,7 +49,7 @@ export default function Navbar({
                 Search
               </button>
             </form>*/}
-            <div class="form-check form-switch">
+            <div className="form-check form-switch">
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -58,10 +58,10 @@ export default function Navbar({
                 onClick={enableDarkMode}
               />
               <label
-                className={`form-check-label text-${textMode}`}
+                className={`form-check-label text-${enableDarkMode} text-${mode === "dark" ? "light" : "dark"}`}
                 htmlFor="switchCheckDefault"
               >
-                Dark Mode
+                Enable Dark Mode
               </label>
             </div>
           </div>

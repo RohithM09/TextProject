@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
-export default function TextForm({ heading }) {
+export default function TextForm({ heading, mode, showAlert }) {
   const handleUpClick = () => {
     //console.log("Uppercase was clicked" + text.toUpperCase());
     let newText = text.toUpperCase();
     setText(newText);
+    showAlert("converted to upper case", "success");
   };
   const handleLoClick = () => {
     let newtext = text.toLowerCase();
     setText(newtext);
+    showAlert("converted to lower case", "success");
   };
 
   const handle = () => {
@@ -38,7 +40,10 @@ export default function TextForm({ heading }) {
 
   return (
     <>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: mode === "dark" ? "white" : "#042743" }}
+      >
         <h1>{heading}</h1>
         <div className="mb-3">
           <textarea
@@ -47,6 +52,10 @@ export default function TextForm({ heading }) {
             onChange={handleOnChange}
             id="myBox"
             rows="8"
+            style={{
+              backgroundColor: mode === "dark" ? "grey" : "white",
+              color: mode === "dark" ? "white" : "#042743",
+            }}
           ></textarea>
         </div>
         <button className="btn btn-primary mx-2" onClick={handleUpClick}>
@@ -65,14 +74,17 @@ export default function TextForm({ heading }) {
           Copy Text
         </button>
       </div>
-      <div className="container my-3">
+      <div
+        className="container my-3"
+        style={{ color: mode === "dark" ? "white" : "#042743" }}
+      >
         <h2>Your text summary</h2>
         <p>
           {text.split(" ").length} words and {text.length} characters
         </p>
         <p>{text.split(" ").length * 0.008} Minutes</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length > 0 ? text : "Enter something to preview it here"}</p>
       </div>
     </>
   );
