@@ -53,24 +53,24 @@ export default function TextForm({ heading, mode, showAlert }) {
             id="myBox"
             rows="8"
             style={{
-              backgroundColor: mode === "dark" ? "grey" : "white",
+              backgroundColor: mode === "dark" ? "#13466e" : "white",
               color: mode === "dark" ? "white" : "#042743",
             }}
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>
           Convert to UpperCase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleLoClick}>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleLoClick}>
           Convert to toLowerCase
         </button>
-        <button className="btn btn-primary mx-2" onClick={capitalize}>
+        <button className="btn btn-primary mx-2 my-2" onClick={capitalize}>
           Capitalize
         </button>
-        <button className="btn btn-primary mx-2" onClick={handle}>
+        <button className="btn btn-primary mx-2 my-2" onClick={handle}>
           Clear Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleCopy}>
+        <button className="btn btn-primary mx-2 my-2" onClick={handleCopy}>
           Copy Text
         </button>
       </div>
@@ -80,9 +80,19 @@ export default function TextForm({ heading, mode, showAlert }) {
       >
         <h2>Your text summary</h2>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters
         </p>
-        <p>{text.split(" ").length * 0.008} Minutes</p>
+        <p>
+          {text.split(" ").filter((element) => {
+            return element.length !== 0;
+          }).length * 0.008}{" "}
+          Minutes
+        </p>
         <h2>Preview</h2>
         <p>{text.length > 0 ? text : "Enter something to preview it here"}</p>
       </div>
