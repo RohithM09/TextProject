@@ -44,7 +44,7 @@ export default function TextForm({ heading, mode, showAlert }) {
         className="container"
         style={{ color: mode === "dark" ? "white" : "#042743" }}
       >
-        <h1>{heading}</h1>
+        <h1 className="mb-2">{heading}</h1>
         <div className="mb-3">
           <textarea
             className="form-control"
@@ -58,19 +58,39 @@ export default function TextForm({ heading, mode, showAlert }) {
             }}
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>
+        <button
+          className="btn btn-primary mx-2 my-2"
+          disabled={text.length === 0}
+          onClick={handleUpClick}
+        >
           Convert to UpperCase
         </button>
-        <button className="btn btn-primary mx-2 my-2" onClick={handleLoClick}>
+        <button
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleLoClick}
+          disabled={text.length === 0}
+        >
           Convert to toLowerCase
         </button>
-        <button className="btn btn-primary mx-2 my-2" onClick={capitalize}>
+        <button
+          className="btn btn-primary mx-2 my-2"
+          onClick={capitalize}
+          disabled={text.length === 0}
+        >
           Capitalize
         </button>
-        <button className="btn btn-primary mx-2 my-2" onClick={handle}>
+        <button
+          className="btn btn-primary mx-2 my-2"
+          onClick={handle}
+          disabled={text.length === 0}
+        >
           Clear Text
         </button>
-        <button className="btn btn-primary mx-2 my-2" onClick={handleCopy}>
+        <button
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleCopy}
+          disabled={text.length === 0}
+        >
           Copy Text
         </button>
       </div>
@@ -94,7 +114,7 @@ export default function TextForm({ heading, mode, showAlert }) {
           Minutes
         </p>
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : "Enter something to preview it here"}</p>
+        <p>{text.length > 0 ? text : "Nothing to preview"}</p>
       </div>
     </>
   );
